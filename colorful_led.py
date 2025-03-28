@@ -33,7 +33,7 @@ pixels_r = neopixel.NeoPixel(pixel_pin, num_pixels, brightness=adjusted_brightne
 pixels_g = neopixel.NeoPixel(pixel_pin_g, num_pixels, brightness=adjusted_brightness_g, auto_write=False)
 pixels_b = neopixel.NeoPixel(pixel_pin_b, num_pixels, brightness=adjusted_brightness_b, auto_write=False)
 
-def color_wipe(r, g, b, wait_ms=50):
+def color_wipe(r, g, b, wait_ms=5000):
     """LEDを特定の色で順番に点灯させる"""
     for i in range(num_pixels):
         pixels_r[i] = (r, 0, 0)

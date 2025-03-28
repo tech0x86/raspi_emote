@@ -22,7 +22,7 @@ def set_led_color(r, g, b):
     green_pin.duty_cycle = g
     blue_pin.duty_cycle = b
 
-def color_wipe(r, g, b, wait_ms=50):
+def color_wipe(r, g, b, wait_ms=5000):
     """LEDを特定の色で順番に点灯させる関数。
 
     Args:
