@@ -88,17 +88,33 @@ try:
     while True:
         distance = get_distance()
         print(f"Distance: {distance:.1f} cm")
-
-        if distance < 100:  # 100cm以内に物体を検知
+        if distance < 50:  # 50cm以下
             # 距離に応じて点滅速度を調整
             blink_speed = max(0.1, distance / 100)  # 最小0.1秒
             set_led_color(65535, 0, 0)  # 赤色点灯
             time.sleep(blink_speed)
             set_led_color(0, 0, 0)  # 消灯
             time.sleep(blink_speed)
+        elif distance < 100:  # 100cm以下
+            # 距離に応じて点滅速度を調整
+            blink_speed = max(0.1, distance / 100)  # 最小0.1秒
+            set_led_color(0, 65535, 0)  # 緑色点灯
+            time.sleep(blink_speed)
+            set_led_color(0, 0, 0)  # 消灯
+            time.sleep(blink_speed)
+        elif distance < 150:  # 150cm以下
+            # 距離に応じて点滅速度を調整
+            blink_speed = max(0.1, distance / 100)  # 最小0.1秒
+            set_led_color(0, 0, 65535)  # 青色点灯
+            time.sleep(blink_speed)
+            set_led_color(0, 0, 0)  # 消灯
+            time.sleep(blink_speed)
         else:
             # 虹色のグラデーションを表示
             rainbow(wait_ms=10, iterations=1)
+
+
+
 
 except KeyboardInterrupt:
     # Ctrl+Cが押されたらGPIOとLEDを片付け
