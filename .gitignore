@@ -172,3 +172,5 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+voicevox_core-0.14.0+cpu-cp38-abi3-linux_aarch64.whl
