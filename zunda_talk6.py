@@ -18,6 +18,7 @@ from PIL import Image, ImageTk
 import threading
 import pandas as pd
 from typing import Dict, Any
+import hashlib  # ファイル先頭のimport部分に追加
 
 # VOICEVOXのインポートを追加
 try:
@@ -168,7 +169,8 @@ def generate_voice(text, force_generate=False):
     
     try:
         # キャッシュファイル名を作成（テキストのハッシュ値を使用）
-        text_hash = str(abs(hash(text)))  # 絶対値を取り、ハイフンを避ける
+        # hash関数ではなくhashlibを使用
+        text_hash = hashlib.md5(text.encode('utf-8')).hexdigest()
         cache_filename = os.path.join(AUDIO_CACHE_DIR, f"{text_hash}.wav")
         
         # キャッシュが存在すれば、それを返す
